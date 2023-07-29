@@ -13,6 +13,7 @@
   "dependencies": {
     "@types/node": "^18.0.6",
     "httpie": "^1.1.2",
+    "ignore": "^5.2.4",
     "node-fetch": "^3.2.6"
   }
 }
