@@ -31,5 +31,32 @@ const server = http.createServer(() =>{
 ```
 Execute no terminal
  ```bash
- node index.js 
+ node server.js 
  ````
+
+ Pra fazer rquisições http
+ ```js
+ import http from 'node:http' 
+
+//cria servidor http 
+const server = http.createServer((req, res) =>{
+    const {method, url} = req
+    
+    console.log(method, url)
+
+        return res.end('Hello World!')
+}) 
+
+//determina porta que será ouvida para um servidor localhost
+server.listen(3333)
+
+ ```
+
+ Para que cada vez que atualizar algo na aplicação não precisamos parar o seevidor e rodar novamente no arquivo **package.json** dentro de **script** altere o script **test** já existente para
+ ```js
+ "scripts": {
+  
+  "dev": "node --watch src/server.js"
+ }
+  
+ ``` 
