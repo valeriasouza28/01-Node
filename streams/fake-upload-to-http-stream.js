@@ -1,8 +1,4 @@
-//process.stdin
-//.pipe(process.stdout)
-
-
-import { Readable, Writable, Transform } from "node:stream";
+import {Readable} from "node:stream"
 
 class OneToHundredStream extends Readable {
     //construtor implicito
@@ -26,20 +22,7 @@ class OneToHundredStream extends Readable {
     
 }
 
-class InverseNumbersStreams extends Transform {
-  _transform(chunck, encoding, callback) {
-    const transformed = Number(chunck.toString()) * -1
-    callback(null, Buffer.from(String(transformed)))
-  }
-}
-
-class MultiplyByFanStream extends Writable {
-    _write(chunck, encoding, callback) {
-		console.log(Number(chunck.toString()) * 10)
-		callback()
-    }
-}
-
-new OneToHundredStream()
-.pipe(new InverseNumbersStreams)
-.pipe(new MultiplyByFanStream())
+fetch("http://localhost:3334", {
+  method: "POST",
+  body: new OneToHundredStream()
+})
